@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}  
+  
+{% block title %}My Blog{% endblock %}  
+  
+{% block content %}  
+  <h1>Файлообменник</h1> 
+  <a href="new/" class="top-menu"><span class="glyphicon glyphicon-plus"><p>Создать пост</p></span></a>
+  {% for post in posts %}  
+    <h2>  
+      <a href="{{ post.get_absolute_url }}">  
+       {{ post.title }}  
+      </a>  
+    </h2> 
+    <p class="date">  
+      Опубликовано {{ post.publish }} Автор: {{ post.author }}  
+    </p>
+    <p>
+      Прикреплённый файл: {{ post.file }}
+    </p>  
+    {{ post.body|truncatewords:30|linebreaks }}  
+  {% endfor %}
+  {% include "../pagination.html" with page=posts %}  
+{% endblock %}

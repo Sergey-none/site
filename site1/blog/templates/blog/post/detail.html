@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}  
+  
+{% block title %}{{ post.title }}{% endblock %}  
+  
+{% block content %}  
+  <h1>{{ post.title }}</h1>  
+  <p class="date">  
+    Опубликовано {{ post.publish }} Автор: {{ post.author }}  
+  </p>
+  <p>
+  	<a href="{{ post.get_link }}">Прикреплённый файл: {{ post.file }}</a>
+  </p>  
+  {{ post.body|linebreaks }}
+
+{% endblock %}
